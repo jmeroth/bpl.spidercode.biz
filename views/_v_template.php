@@ -44,7 +44,7 @@
 	</nav>
 	<header role="banner">
         <div class="inner">
-           <h1 class="logo"><a href="#"><img src='/uploads/bpl_header.PNG' alt='BPL Header Picture'></a></h1>
+           <h1 class="logo"><a href="#"><img src='/uploads/bpl_header.png' alt='BPL Header Picture'></a></h1>
         </div><!-- /.inner -->
      </header>
 
