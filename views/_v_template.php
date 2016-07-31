@@ -22,18 +22,19 @@
 			<ul class='nav' id='nav'>
 			<li class='active'><a href='/'>Home</a></li>
 			<li class='active'><a href='/links'>Links</a></li>
-			<li class='active'><a href='/api/weather'>Weather</a></li>
+			<!-- <li class='active'><a href='/api/weather'>Weather</a></li> -->
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
 				<li class='active'><a href='/users/profile'>Profile</a></li>
-				<li class='active'><a href='/reservations/member'>Reserve yourself</a></li>
-				<li class='active'><a href='/reservations/guest'>Add a guest</a></li>
-				<li class='active'><a href='/reservations/all'>View guests</a></li>
-				<li class='active'><a href='/users/logout'>Logout</a></li>
+				<li class='active'><a href='/reservations/member'>Record Event</a></li>
+				<!-- <li class='active'><a href='/reservations/guest'>Add a guest</a></li> -->
+				<li class='active'><a href='/reservations/all'>View Stats</a></li>
 				<?php if($user->role == 'vp'): ?>			
-					<li class='active'><a href='/users/signup'>Sign up new member</a></li>
-					<li class='active'><a href='/api/display'>api data</a></li>
+					<!-- <li class='active'><a href='/users/signup'>Sign up new member</a></li>
+					<li class='active'><a href='/api/display'>api data</a></li> -->
 				<?php endif; ?>
+				<li class='active'><a href='/users/logout'>Logout</a></li>
+
 			<!-- Menu options for users who are not logged in -->
 			<?php else: ?>
 				<li class='active'><a href='/users/login'>LOGIN</a></li>
@@ -43,7 +44,7 @@
 	</nav>
 	<header role="banner">
         <div class="inner">
-           <h1 class="logo"><a href="#"><img src='/uploads/WelcomeWedeln.JPG' alt='Welcome picture'></a></h1>
+           <h1 class="logo"><a href="#"><img src='/uploads/bpl_header.PNG' alt='BPL Header Picture'></a></h1>
         </div><!-- /.inner -->
      </header>
 
