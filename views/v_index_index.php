@@ -28,26 +28,18 @@
 <article class='main' role='main'>
 	<!-- <section id='content'> -->
 		<h2>Welcome<?php if($user) echo ', '.$user->first_name; ?></h2>
-		<p>Wedeln Ski & Outdoors Club is an active, four-season club located in New Hampshire's Mount Washington Valley
-		in Barlett, NH next to North Conway. Wedeln is near many ski resorts which have excellent terrain for skiing,
-		snowboarding and cross country skiing. We are much more than a ski club: throughout the year, we and our guests
-		participate in a variety of organized activities and social events offered both through the club and via our
-		affiliation with the Eastern Inter-Club Ski League (EICSL).</p>
+		<p>Each of our 24 neighborhood libraries holds special treasures as well as lots of public programs.</p>
 	<!-- </section> -->
 </article>
 
 <aside>		
 	<section class='related'>
 		<ul>
-			<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-			<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-			<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-			<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
-			<img src='/uploads/avatars/Snowflake.gif' alt='Snowflake'>
+			<img src='/uploads/graphics-books.gif' alt='Snowflake'>
 		</ul>
 	</section>
 	<section class='banner'>
-		<h2>Think snow!</h2>
+		<h2>Support your local branch library!</h2>
 	</section>
 </aside>
 	

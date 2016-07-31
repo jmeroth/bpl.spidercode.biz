@@ -9,6 +9,9 @@
 		<td><b>Last Name: </b><em><?=$user->last_name?></em></td>
 	</tr>
 	<tr>
+		<td><b>Branch: </b><em><?=$user->location?></em></td>
+	</tr>
+	<tr>
 		<td><b>Email: </b><em><?=$user->email?></em></td>
 	</tr>
 	<tr>

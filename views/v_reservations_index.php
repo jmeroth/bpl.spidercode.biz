@@ -1,17 +1,21 @@
 <table width='40%' BORDER=0 CELLPADDING=3 CELLSPACING=1 
     RULES=ROWS FRAME=HSIDES>
 	<tr>
-		<th>Name</th>
-		<th>Gender</th>
-		<th>Room</th>
+		<th>Branch</th>
+		<th>Event Name</th>
+		<th>Age Group</th>
+		<th>Quantity</th>
+		<th>Attendance</th>
 		<th></th>
 	<tr/>
-<?php foreach($guests as $guest): ?>
+<?php foreach($events as $event): ?>
 <form method='POST' action='/reservations/p_remove/<?=$guest['guest_id']?>'>
 	<tr>
-		<td><?=$guest['guestname']?></td>
-		<td align='center'><?=$guest['gender']?></td>
-		<td align='center'><?=$guest['roomid']?></td>
+		<td><?=$event['location']?></td>
+		<td align='center'><?=$event['eventName']?></td>
+		<td align='center'><?=$event['ageGroup']?></td>
+		<td align='center'><?=$event['eventCount']?></td>
+		<td align='center'><?=$event['attendanceSum']?></td>
 		<td><input type='submit' value='remove'></td>
 	</tr>
 </form>
@@ -20,8 +24,8 @@
 
 <?php if($user->role == 'vp'): ?>	
 	<form method='POST' action='/reservations/p_assign'>
-		<tr style="background-color: #9D0000">
-			<td></td><td></td><td><input type='submit' value='Assign rooms'></td><td></td>
+		<tr style="background-color: #a36600">
+			<td></td><td></td><td></td><td></td><td><input type='submit' value='Submit to Central'></td><td></td>
 		</tr>
 	</form>
 <?php endif; ?>
