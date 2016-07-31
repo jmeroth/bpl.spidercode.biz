@@ -59,7 +59,7 @@ class reservations_controller extends base_controller {
 
         # Setup view
 		$this->template->content = View::instance('v_reservations_member');
-        $this->template->title = "Add Member";	
+        $this->template->title = "Add Event";	
 				
         # Render the view
 			echo $this->template;
@@ -84,8 +84,9 @@ class reservations_controller extends base_controller {
 		#echo "Room id:" . $roomid;
         # Insert:  insert('table-name', array from forms post method)
         # Note didn't have to sanitize $_POST data because the insert method does it for us
-        DB::instance(DB_NAME)->insert('guests', $_POST);
+        DB::instance(DB_NAME)->insert('events', $_POST);
 
+		/* calculations not needed
 		# Determine current occupancy of the members room
 		$o = "SELECT
 				rooms.occupancy
@@ -98,14 +99,17 @@ class reservations_controller extends base_controller {
 		$newocc = $currocc['occupancy'] + 1;
 		$myocc = array("occupancy" => $newocc);
 		DB::instance(DB_NAME)->update('rooms', $myocc, "WHERE roomid = '".$roomid."'");
+		*/
 			
         # redirect to view the list of guests
 		Router::redirect('/reservations/all');
 
     }
 
-    
-	public function all() {
+
+/* ORIGINAL all() FUNCTION
+
+public function all() {
 
 	    # Set up the View
 	    $this->template->content = View::instance('v_reservations_index');
@@ -149,6 +153,60 @@ class reservations_controller extends base_controller {
 		. $vacancy[2]['vacancy'] . "</b> male."
 		;
 		echo $message;
+		
+	}
+
+	*/
+    
+	public function all() {
+
+	    # Set up the View
+	    $this->template->content = View::instance('v_reservations_index');
+	    $this->template->title   = "Branch Stats";
+
+	    # Build the guest query
+		# Define the WHERE clause.  if vp, show all guests.
+		if ($this->user->role == 'vp') {
+			$clause=" WHERE 1";
+		} else {
+			$clause=" WHERE events.location = "."$this->user->location";	
+		}
+	    $q = 'SELECT 
+	    		events.location, 
+	    		events.eventName, 
+	    		events.ageGroup, 
+	    		count(events.eventId) eventCount, 
+	    		sum(events.attendance) attendanceSum
+	    		FROM events GROUP BY events.location, events.eventName, events.ageGroup';
+			
+	    # Run the guest query
+	    $events = DB::instance(DB_NAME)->select_rows($q);
+		
+		/* # Build the vacancy query
+		$v = 'SELECT
+				rooms.gender,
+				sum(rooms.capacity - rooms.occupancy) as vacancy
+				FROM rooms
+				GROUP BY rooms.gender';
+		*/		
+	    # Pass data to the View
+		# CHANGE THE NAME OF THIS content parameter from "guests" to "events"
+	    #$this->template->content->events = $events;
+	    $this->template->content->events = $events;
+
+	    # Render the View
+	    echo $this->template;	    
+			
+		/* HIDE VACANCY FEATURE
+		# Run the vacancy query
+	    $vacancy = DB::instance(DB_NAME)->select_rows($v);
+		$message = "Beds remaining: <b>" 
+		. $vacancy[0]['vacancy'] . "</b> undeclared, <b>"
+		. $vacancy[1]['vacancy'] . "</b> female and <b>" 
+		. $vacancy[2]['vacancy'] . "</b> male."
+		;
+		echo $message;
+		*/
 		
 	}
 	
